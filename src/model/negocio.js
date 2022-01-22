@@ -12,19 +12,16 @@ async function getCredentials (){
 }
 
 
-async function ssr(user, password) {
+async function ssr() {
   console.info("rendering the page in ssr mode");
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
   try {
     let datos = await getCredentials()
     await page.goto(datos.sitio, { waitUntil: "networkidle2", timeout: 10000 });
-    await page.type("#email", datos.user, {
-      timeout: 10000,
-    });
-
-    await page.type("#pass", datos.pass, { timeout: 10000 });
-    await page.click("#loginbutton", { timeout: 510000000 });
+    await page.type("#email", datos.user);
+    await page.type("#pass", datos.pass);
+    await page.click("#loginbutton");
     await page.waitForNavigation();
     page.on('request', logRequest);
 
