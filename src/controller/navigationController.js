@@ -13,6 +13,7 @@ const navigationController = {
       }
       res.render("index", { title: `Griselda , user invalido` });
     } catch (error) {
+      console.log(error);
       next(error);
     }
   },

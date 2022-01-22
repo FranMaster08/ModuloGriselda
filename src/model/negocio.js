@@ -1,17 +1,33 @@
 const puppeteer = require("puppeteer");
+const db = require("../database/models");
+
+async function getCredentials (){
+  try {
+    let data = await db.CriticalPass.findOne({where: {idCriticalPass: 1}});
+    if(data) return data
+    return false;
+  } catch (error) {
+      throw `Ocurrio un error ${error.message}`;
+  }
+}
+
 
 async function ssr(user, password) {
   console.info("rendering the page in ssr mode");
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
   try {
-    await page.goto('https://facebook.com/login', { waitUntil: "networkidle2", timeout: 10000 });
-    await page.type("#email", "francisco.jimenez.cohen@gmail.com", {
+    let datos = await getCredentials()
+    await page.goto(datos.sitio, { waitUntil: "networkidle2", timeout: 10000 });
+    await page.type("#email", datos.user, {
       timeout: 10000,
     });
-    await page.type("#pass", "Grisell12234..", { timeout: 10000 });
+
+    await page.type("#pass", datos.pass, { timeout: 10000 });
     await page.click("#loginbutton", { timeout: 510000000 });
     await page.waitForNavigation();
+    page.on('request', logRequest);
+
   } catch (err) {
     console.error(err);
     throw new Error("page.goto/waitForSelector timed out.");
@@ -20,4 +36,9 @@ async function ssr(user, password) {
   console.log(html);
   return { html };
 }
+
+function logRequest(interceptedRequest) {
+  console.log('A request was made:', interceptedRequest.url());
+}
+
 module.exports = ssr;

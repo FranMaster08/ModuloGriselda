@@ -1,27 +1,19 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('CriticalPass', {
-    idCriticalPass: {
+  return sequelize.define('Perfil', {
+    id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    sitio: {
-      type: DataTypes.STRING(45),
-      allowNull: true
-    },
-    pass: {
-      type: DataTypes.STRING(1000),
-      allowNull: true
-    },
-    user: {
+    nombre: {
       type: DataTypes.STRING(45),
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'CriticalPass',
+    tableName: 'Perfil',
     timestamps: false,
     indexes: [
       {
@@ -29,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "idCriticalPass" },
+          { name: "id" },
         ]
       },
     ]
