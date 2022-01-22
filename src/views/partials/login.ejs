@@ -1,0 +1,104 @@
+<style>
+  .login {
+    margin: 10px;
+    border: 1px solid #ccc;
+    width: 600px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .login form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+  }
+
+
+
+  .textbox {
+    border: 1px solid #DBE1EB;
+    font-size: 18px;
+    font-family: Arial, Verdana;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -o-border-radius: 4px;
+    background: #FFFFFF;
+    background: linear-gradient(left, #FFFFFF, #F7F9FA);
+    background: -moz-linear-gradient(left, #FFFFFF, #F7F9FA);
+    background: -webkit-linear-gradient(left, #FFFFFF, #F7F9FA);
+    background: -o-linear-gradient(left, #FFFFFF, #F7F9FA);
+    color: #2E3133;
+  }
+
+  .textbox:focus {
+    color: #2E3133;
+    border-color: #FBFFAD;
+  }
+
+  .remember {
+      display: flex;
+      justify-content: space-around;
+    
+  }
+
+  .remember div{
+      margin-right: 10px;
+  }
+
+
+  .boton {
+      color: white;
+      font-weight:bolder;
+      display:block;
+      background :rgb(26, 137, 23);
+      padding: 10px;
+      font-size: 12px;
+      border: transparent;
+      width: 100%;
+      border-radius: 10px;
+      
+  }
+ 
+</style>
+
+<div class="login">
+  <form action="/" method="POST">
+    <div class="login-form">
+      <label for="user">User</label>
+      <input name="user" class="textbox" type="text">
+    </div>
+
+    <div class="login-form">
+      <label for="pass">Password</label>
+      <input class="textbox" type="password" name="pass">
+    </div>
+
+
+    <div class='remember'>
+      <div>
+        <input type="checkbox" name="check" id="">
+        <label for="check">Recuerdame</label>
+      </div>
+      <a href="#">Olvidaste tu contraseña?</a>
+    </div>
+
+
+    <div>
+      <button type="submit" class="boton"> Entrar </button>
+    </div>
+  </form>
+</div>
