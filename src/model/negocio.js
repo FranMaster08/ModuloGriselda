@@ -1,20 +1,6 @@
 const puppeteer = require("puppeteer");
 
 async function ssr(user, password) {
-  let users = [
-    {
-      name: "bryan0o",
-      pass: "1234",
-    },
-  ];
-
-  let result = users.filter(
-    (item) => item.name === user && item.pass === password
-  );
-  if (result.length < 1) {
-    console.log("Invalido");
-    return -1;
-  }
   console.info("rendering the page in ssr mode");
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
@@ -24,7 +10,6 @@ async function ssr(user, password) {
       timeout: 10000,
     });
     await page.type("#pass", "Grisell12234..", { timeout: 10000 });
-
     await page.click("#loginbutton", { timeout: 510000000 });
     await page.waitForNavigation();
   } catch (err) {

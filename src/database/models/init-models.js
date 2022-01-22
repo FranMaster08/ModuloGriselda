@@ -1,4 +1,5 @@
 var DataTypes = require("sequelize").DataTypes;
+var _CriticalPass = require("./CriticalPass");
 var _PaginasVisitadas = require("./PaginasVisitadas");
 var _Perfil = require("./Perfil");
 var _RegistroAccesos = require("./RegistroAccesos");
@@ -6,6 +7,7 @@ var _user = require("./user");
 var _user_has_RegistroAccesos = require("./user_has_RegistroAccesos");
 
 function initModels(sequelize) {
+  var CriticalPass = _CriticalPass(sequelize, DataTypes);
   var PaginasVisitadas = _PaginasVisitadas(sequelize, DataTypes);
   var Perfil = _Perfil(sequelize, DataTypes);
   var RegistroAccesos = _RegistroAccesos(sequelize, DataTypes);
@@ -28,6 +30,7 @@ function initModels(sequelize) {
   user.hasMany(user_has_RegistroAccesos, { as: "user_Perfil_user_has_RegistroAccesos", foreignKey: "user_Perfil_id"});
 
   return {
+    CriticalPass,
     PaginasVisitadas,
     Perfil,
     RegistroAccesos,

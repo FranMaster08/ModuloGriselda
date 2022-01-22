@@ -2,7 +2,7 @@
   "development": {
     "username": "franAdmin",
     "password": "Adrian12234..",
-    "database": "tiendaGYM",
+    "database": "aaGriseldaDb",
     "host": "45.79.201.214",
     "dialect": "mysql"
   },
@@ -16,7 +16,7 @@
   "production": {
     "username": "franAdmin",
     "password": "Adrian12234..",
-    "database": "tiendaGYM",
+    "database": "aaGriseldaDb",
     "host": "45.79.201.214",
     "dialect": "mysql"
   }
